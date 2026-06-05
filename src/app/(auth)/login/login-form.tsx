@@ -42,7 +42,7 @@ export function LoginForm() {
       if (isSignUp) {
         setError("Check your email to confirm your account.");
       } else {
-        router.push("/onboarding");
+        window.location.href = "/onboarding";
         router.refresh();
       }
     } catch (err) {

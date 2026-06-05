@@ -1,0 +1,146 @@
+import type { DashboardMetrics, PlatformMetrics, SpendDataPoint } from "@/types";
+
+export const mockDashboardMetrics: DashboardMetrics = {
+  total_spend: 48320,
+  total_impressions: 3241000,
+  total_clicks: 87420,
+  total_conversions: 1243,
+  avg_roas: 3.87,
+  avg_ctr: 0.027,
+  avg_cpc: 0.55,
+};
+
+export const mockPlatformMetrics: PlatformMetrics[] = [
+  {
+    platform: "google",
+    total_spend: 22150,
+    total_impressions: 1540000,
+    total_clicks: 48200,
+    avg_roas: 4.21,
+  },
+  {
+    platform: "meta",
+    total_spend: 18640,
+    total_impressions: 1320000,
+    total_clicks: 31400,
+    avg_roas: 3.64,
+  },
+  {
+    platform: "linkedin",
+    total_spend: 7530,
+    total_impressions: 381000,
+    total_clicks: 7820,
+    avg_roas: 2.91,
+  },
+];
+
+export const mockSpendOverTime: SpendDataPoint[] = Array.from({ length: 30 }, (_, i) => {
+  const date = new Date();
+  date.setDate(date.getDate() - (29 - i));
+  return {
+    date: date.toISOString().split("T")[0],
+    google: Math.round(600 + Math.random() * 400),
+    meta: Math.round(450 + Math.random() * 350),
+    linkedin: Math.round(150 + Math.random() * 200),
+    total: 0,
+  };
+}).map((d) => ({ ...d, total: d.google + d.meta + d.linkedin }));
+
+export const mockCampaigns = [
+  {
+    id: "1",
+    campaign_name: "Brand Awareness Q2",
+    platform: "google" as const,
+    status: "active" as const,
+    spend: 8240,
+    impressions: 620000,
+    clicks: 18400,
+    conversions: 412,
+    roas: 4.8,
+    ctr: 0.0297,
+  },
+  {
+    id: "2",
+    campaign_name: "Retargeting - Website Visitors",
+    platform: "meta" as const,
+    status: "active" as const,
+    spend: 5120,
+    impressions: 430000,
+    clicks: 12300,
+    conversions: 287,
+    roas: 5.1,
+    ctr: 0.0286,
+  },
+  {
+    id: "3",
+    campaign_name: "Lead Gen - Enterprise",
+    platform: "linkedin" as const,
+    status: "active" as const,
+    spend: 4200,
+    impressions: 210000,
+    clicks: 4100,
+    conversions: 89,
+    roas: 2.6,
+    ctr: 0.0195,
+  },
+  {
+    id: "4",
+    campaign_name: "Search - Competitors",
+    platform: "google" as const,
+    status: "active" as const,
+    spend: 6300,
+    impressions: 480000,
+    clicks: 15200,
+    conversions: 198,
+    roas: 3.9,
+    ctr: 0.0317,
+  },
+  {
+    id: "5",
+    campaign_name: "Lookalike Audience - Purchasers",
+    platform: "meta" as const,
+    status: "paused" as const,
+    spend: 3840,
+    impressions: 310000,
+    clicks: 8700,
+    conversions: 134,
+    roas: 3.2,
+    ctr: 0.028,
+  },
+  {
+    id: "6",
+    campaign_name: "Thought Leadership",
+    platform: "linkedin" as const,
+    status: "active" as const,
+    spend: 2100,
+    impressions: 95000,
+    clicks: 2300,
+    conversions: 41,
+    roas: 2.4,
+    ctr: 0.0242,
+  },
+  {
+    id: "7",
+    campaign_name: "Shopping - All Products",
+    platform: "google" as const,
+    status: "active" as const,
+    spend: 5200,
+    impressions: 380000,
+    clicks: 10800,
+    conversions: 256,
+    roas: 4.1,
+    ctr: 0.0284,
+  },
+  {
+    id: "8",
+    campaign_name: "Video Views - Product Demo",
+    platform: "meta" as const,
+    status: "active" as const,
+    spend: 4800,
+    impressions: 520000,
+    clicks: 7200,
+    conversions: 98,
+    roas: 2.8,
+    ctr: 0.0138,
+  },
+];

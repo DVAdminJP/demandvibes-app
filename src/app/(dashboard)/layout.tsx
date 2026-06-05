@@ -30,7 +30,7 @@ export default async function DashboardLayout({
     redirect("/onboarding");
   }
 
-  const workspace = member.workspaces as { id: string; name: string; slug: string; plan: string; created_at: string } | null;
+  const workspace = (member.workspaces as unknown) as { id: string; name: string; slug: string; plan: string; created_at: string } | null;
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">

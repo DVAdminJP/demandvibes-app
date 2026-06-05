@@ -43,7 +43,7 @@ export function LoginForm() {
         const { data: member } = await supabase
           .from("workspace_members")
           .select("workspace_id")
-          .single();
+          .maybeSingle();
 
         if (member) {
           router.push("/dashboard");
